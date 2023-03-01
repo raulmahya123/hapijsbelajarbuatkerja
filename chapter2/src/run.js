@@ -1,3 +1,4 @@
+const { server } = require('@hapi/hapi');
 const Hapi = require('@hapi/hapi');
 
 
@@ -6,9 +7,19 @@ const init = async () =>{
         port: 3000,
         host: 'localhost'
     });
+       //menggunakna framework api DAN MENGGUNAKAN SATU ARRAY
+       server.route({
+        
+        method: 'GET',
+        path:'/',
+        handler:(request,h)=>{
+            return 'HALLO SAYANG ';
+        },
+        })
     await server.start();
     console.log(`Server running on %s ${server.info.uri}`);
 };
+ 
 
 
 

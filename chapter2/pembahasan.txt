@@ -1,0 +1,1 @@
+#ini membuat router menggunakan satu array
