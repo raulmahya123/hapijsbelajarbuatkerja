@@ -1,5 +1,6 @@
 const { server } = require('@hapi/hapi');
 const Hapi = require('@hapi/hapi');
+const routes = require('../src/routes')
 
 
 const init = async () =>{
@@ -8,42 +9,7 @@ const init = async () =>{
         host: 'localhost'
     });
        //menggunakna framework api DAN MENGGUNAKAN SATU ARRAY
-       server.route([
-        {
-        method: 'GET',
-        path:'/',
-        handler:(request,h)=>{
-            return 'HALLO SAYANG';
-        },
-        },
-        {
-            method: 'GET',
-            path:'/about',
-            handler:(request,h)=>{
-                return 'UPI BLM MANDI';
-            },
-        },
-        {
-            method: 'GET',
-            path:'/home',
-            handler:(request,h)=>{
-                return 'UPI BLM MINUM OBAT';
-            },
-        },
-        {
-            method: 'GET',
-            path:'/{any*}',
-            handler:(request,h)=>{
-                return 'UPI BAU';
-            },
-        },{
-            method: '*',
-            path:'/home',
-            handler:(request,h)=>{
-                return 'RAULGANTENG';
-            },
-        }
-    ]);
+       server.route(routes);
     await server.start();
     console.log(`Server running on %s ${server.info.uri}`);
 };
